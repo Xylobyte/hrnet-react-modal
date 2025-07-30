@@ -1,21 +1,41 @@
 {
-  "name": "hrnet-react-modal",
-  "version": "1.0.0",
-  "description": "A react modal for HRnet project",
-  "keywords": [
-    "modal",
-    "react",
-    "hrnet",
-    "dialog"
-  ],
-  "license": "ISC",
-  "author": "Xylobyte",
-  "type": "commonjs",
-  "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "typescript": "^5.8.3"
-  }
+    "name": "hrnet-react-modal",
+    "version": "1.0.0-beta.0",
+    "description": "A react modal for HRnet project",
+    "keywords": [
+        "modal",
+        "react",
+        "hrnet",
+        "dialog"
+    ],
+    "license": "ISC",
+    "author": "Xylobyte",
+    "type": "commonjs",
+    "main": "dist/index.js",
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "scripts": {
+        "clean": "rimraf dist",
+        "prebuild": "pnpm run clean",
+        "build": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "typescript": "^5.8.3",
+        "rimraf": "^6.0.1"
+    },
+    "dependencies": {
+        "focus-trap-react": "^11.0.4"
+    },
+    "peerDependencies": {
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1"
+    }
 }
