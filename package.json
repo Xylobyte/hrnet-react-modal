@@ -1,6 +1,6 @@
 {
     "name": "@xylobyte/hrnet-react-modal",
-    "version": "1.0.0-beta.0",
+    "version": "1.0.0-beta.3",
     "description": "A react modal for HRnet project",
     "keywords": [
         "modal",
@@ -10,32 +10,51 @@
     ],
     "license": "MIT",
     "author": "Xylobyte",
-    "type": "commonjs",
-    "main": "dist/index.js",
-    "files": [
-        "dist"
-    ],
+    "type": "module",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js",
+    "types": "dist/index.d.ts",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "default": "./dist/index.js"
-        }
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js"
+        },
+        "./styles": "./dist/hrnet-react-modal.css"
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "scripts": {
-        "clean": "rimraf dist",
-        "prebuild": "pnpm run clean",
-        "build": "tsc",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "devDependencies": {
-        "typescript": "^5.8.3",
-        "rimraf": "^6.0.1"
+        "dev": "vite",
+        "build": "tsc -b && vite build",
+        "lint": "eslint .",
+        "preview": "vite preview",
+        "prepublishOnly": "npm run build"
     },
     "dependencies": {
         "focus-trap-react": "^11.0.4"
     },
     "peerDependencies": {
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.32.0",
+        "@types/node": "^24.2.0",
+        "@types/react": "^19.1.9",
+        "@types/react-dom": "^19.1.7",
+        "@vitejs/plugin-react": "^4.7.0",
+        "eslint": "^9.32.0",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-refresh": "^0.4.20",
+        "globals": "^16.3.0",
         "react": "^19.1.1",
-        "react-dom": "^19.1.1"
+        "react-dom": "^19.1.1",
+        "sass-embedded": "^1.90.0",
+        "typescript": "~5.9.2",
+        "typescript-eslint": "^8.39.0",
+        "unplugin-dts": "1.0.0-beta.6",
+        "vite": "^7.0.6"
     }
 }
