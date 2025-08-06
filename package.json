@@ -1,6 +1,6 @@
 {
     "name": "@xylobyte/hrnet-react-modal",
-    "version": "1.0.0-beta.3",
+    "version": "1.0.0-beta.4",
     "description": "A react modal for HRnet project",
     "keywords": [
         "modal",
@@ -22,6 +22,9 @@
         },
         "./styles": "./dist/hrnet-react-modal.css"
     },
+    "files": [
+        "dist"
+    ],
     "publishConfig": {
         "access": "public"
     },
