@@ -3,7 +3,7 @@ import {useEffect, useRef} from "react";
 import "./HRnetPopup.scss";
 import {createPortal} from "react-dom";
 
-export interface ModalProps {
+export interface HRnetPopupProps {
 	isOpen: boolean;
 	onClose: () => void;
 	title?: string;
@@ -16,7 +16,7 @@ export interface ModalProps {
 	cancelText?: string;
 }
 
-export default function Modal({
+export default function HRnetPopup({
 	                              isOpen,
 	                              onClose,
 	                              title,
@@ -27,7 +27,7 @@ export default function Modal({
 	                              onConfirm,
 	                              confirmText = "Confirmer",
 	                              cancelText = "Annuler"
-                              }: ModalProps) {
+                              }: HRnetPopupProps) {
 	const overlayRef = useRef<HTMLDivElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
 	const previousFocused = useRef<Element | null>(null);
