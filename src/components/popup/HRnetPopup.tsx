@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useEffect, useRef} from "react";
+import {memo, useEffect, useRef} from "react";
 import "./HRnetPopup.scss";
 import {createPortal} from "react-dom";
 
@@ -16,18 +16,18 @@ export interface HRnetPopupProps {
 	cancelText?: string;
 }
 
-export default function HRnetPopup({
-	                              isOpen,
-	                              onClose,
-	                              title,
-	                              closeOnOverlayClick = true,
-	                              closeOnEsc = true,
-	                              className = "",
-	                              children,
-	                              onConfirm,
-	                              confirmText = "Confirmer",
-	                              cancelText = "Annuler"
-                              }: HRnetPopupProps) {
+function HRnetPopup({
+	                    isOpen,
+	                    onClose,
+	                    title,
+	                    closeOnOverlayClick = true,
+	                    closeOnEsc = true,
+	                    className = "",
+	                    children,
+	                    onConfirm,
+	                    confirmText = "Confirmer",
+	                    cancelText = "Annuler"
+                    }: HRnetPopupProps) {
 	const overlayRef = useRef<HTMLDivElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
 	const previousFocused = useRef<Element | null>(null);
@@ -124,3 +124,5 @@ export default function HRnetPopup({
 		</div>
 		, document.body);
 }
+
+export default memo(HRnetPopup);
