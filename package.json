@@ -1,6 +1,6 @@
 {
     "name": "@xylobyte/hrnet-react-modal",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A react modal for HRnet project",
     "keywords": [
         "modal",
@@ -49,6 +49,7 @@
         "eslint-plugin-react-hooks": "^5.2.0",
         "eslint-plugin-react-refresh": "^0.4.20",
         "globals": "^16.3.0",
+        "prettier": "^3.6.2",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
         "sass-embedded": "^1.90.0",

@@ -3,16 +3,69 @@ import {memo, useEffect, useRef} from "react";
 import "./HRnetPopup.scss";
 import {createPortal} from "react-dom";
 
+/**
+ * Props for the HRnetPopup component.
+ * @interface HRnetPopupProps
+ */
 export interface HRnetPopupProps {
+	/**
+	 * Indicates whether the popup is currently displayed.
+	 * @type {boolean}
+	 */
 	isOpen: boolean;
+
+	/**
+	 * Callback fired when the popup is requested to close.
+	 * @type {() => void}
+	 */
 	onClose: () => void;
+
+	/**
+	 * Optional title shown at the top of the popup.
+	 * @type {string}
+	 */
 	title?: string;
+
+	/**
+	 * If true, clicking the overlay will close the popup.
+	 * @type {boolean}
+	 */
 	closeOnOverlayClick?: boolean;
+
+	/**
+	 * If true, pressing the Escape key will close the popup.
+	 * @type {boolean}
+	 */
 	closeOnEsc?: boolean;
+
+	/**
+	 * Optional CSS class to apply to the popup container.
+	 * @type {string}
+	 */
 	className?: string;
+
+	/**
+	 * React nodes to render inside the popup body.
+	 * @type {React.ReactNode}
+	 */
 	children?: React.ReactNode;
+
+	/**
+	 * Callback fired when the user confirms an action.
+	 * @type {() => void}
+	 */
 	onConfirm?: () => void;
+
+	/**
+	 * Text for the confirm button.
+	 * @type {string}
+	 */
 	confirmText?: string;
+
+	/**
+	 * Text for the cancel button.
+	 * @type {string}
+	 */
 	cancelText?: string;
 }
 
