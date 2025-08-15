@@ -69,6 +69,17 @@ export interface HRnetPopupProps {
 	cancelText?: string;
 }
 
+/**
+ * HRnetPopup – a reusable modal component.
+ *
+ * The component renders a modal dialog into the document body using a React portal.
+ * It supports:
+ *   • Keyboard navigation (Escape to close, Tab trapping inside the modal)
+ *   • Optional closing on overlay click or Escape key
+ *   • Custom titles, button texts and styles
+ *
+ * @param {HRnetPopupProps} props – props for the modal.
+ */
 function HRnetPopup({
 	                    isOpen,
 	                    onClose,
@@ -79,23 +90,33 @@ function HRnetPopup({
 	                    children,
 	                    onConfirm,
 	                    confirmText = "Confirmer",
-	                    cancelText = "Annuler"
+	                    cancelText = "Annuler",
                     }: HRnetPopupProps) {
+	/* References to the overlay and modal content elements */
 	const overlayRef = useRef<HTMLDivElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
+
+	/* Store the element that had focus before the modal opened */
 	const previousFocused = useRef<Element | null>(null);
 
+	/* Handle opening/closing and keyboard interactions */
 	useEffect(() => {
 		if (!isOpen) return;
 
+		// Remember the element that had focus
 		previousFocused.current = document.activeElement;
+		// Move focus into the modal
 		contentRef.current?.focus();
 
+		// Keyboard event handler
 		const handleKeyDown = (e: KeyboardEvent) => {
+			// Close on Escape
 			if (closeOnEsc && e.key === "Escape") {
 				e.stopPropagation();
 				onClose();
-			} else if (e.key === "Tab") {
+			}
+			// Trap Tab navigation inside the modal
+			else if (e.key === "Tab") {
 				const focusable = contentRef.current?.querySelectorAll(
 					'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
 				);
@@ -120,10 +141,12 @@ function HRnetPopup({
 		document.addEventListener("keydown", handleKeyDown);
 		return () => {
 			document.removeEventListener("keydown", handleKeyDown);
+			// Restore focus to the element that was focused before the modal opened
 			(previousFocused.current as HTMLElement)?.focus();
 		};
 	}, [isOpen, closeOnEsc, onClose]);
 
+	/* Close modal when clicking on the overlay (outside the content) */
 	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (closeOnOverlayClick && e.target === overlayRef.current) {
 			onClose();
@@ -174,8 +197,10 @@ function HRnetPopup({
 					)}
 				</footer>
 			</div>
-		</div>
-		, document.body);
+		</div>,
+		document.body
+	);
 }
+
 
 export default memo(HRnetPopup);

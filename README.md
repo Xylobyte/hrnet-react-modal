@@ -11,6 +11,10 @@ A simple and lightweight Modal component for React, with no external dependencie
 -  🎭 Fade‑in animation on open
 -  ✨ Customizable buttons
 
+## Prerequisites
+
+You need `node --version >= 24`
+
 ## Installation
 
 ```shell

@@ -1,6 +1,6 @@
 {
     "name": "@xylobyte/hrnet-react-modal",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A react modal for HRnet project",
     "keywords": [
         "modal",
@@ -8,6 +8,11 @@
         "hrnet",
         "dialog"
     ],
+    "homepage": "https://github.com/Xylobyte/hrnet-react-modal#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Xylobyte/hrnet-react-modal.git"
+    },
     "license": "MIT",
     "author": "Xylobyte",
     "type": "module",
